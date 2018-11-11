@@ -1,4 +1,4 @@
-#Torngas Web Framework
+# Torngas Web Framework
 A simple app web framework based on tornado.
 
 [![Build Status](https://travis-ci.org/mqingyn/torngas.svg?branch=master)](https://travis-ci.org/mqingyn/torngas)
@@ -9,16 +9,16 @@ Torngas 是基于[Tornado](https://github.com/tornadoweb/tornado)的web mvc框�
 
 
 
-##**框架依赖**
+## **框架依赖**
 
 * future
 * tornado>=3.2
 
-##**安装**
+## **安装**
 
  * **pip**:  `pip install torngas`
 
-##**快速入门**
+## **快速入门**
 
 * 导引：
 
@@ -40,7 +40,7 @@ Torngas 是基于[Tornado](https://github.com/tornadoweb/tornado)的web mvc框�
  	
 <br>
 
-* ####目录结构示例：
+* #### 目录结构示例：
 
         |- app
             +- myapp1
@@ -82,7 +82,7 @@ Torngas 是基于[Tornado](https://github.com/tornadoweb/tornado)的web mvc框�
 		启动服务后，在浏览器中查看 `127.0.0.1:8000` ,你应该可以看到一个欢迎页面！
 
 
-* ####settings配置：
+* #### settings配置：
 	
 	在项目runserver.py中，你可以指定使用的预设值的默认配置文件，如配置文件在应用根目录app.settings下的setting.py：
 
@@ -99,7 +99,7 @@ Torngas 是基于[Tornado](https://github.com/tornadoweb/tornado)的web mvc框�
 	`DEBUG`: 控制应用是否处于debug状态，等同于 tornado的debug参数。  
 	`XHEADERS`： 控制是否开启httpserver的 xheaders。你不用再额外传递一个xheader参数。
 
-* ####webserver:
+* #### webserver:
 	
 	最简单的server启动方式：
 		
@@ -158,7 +158,7 @@ Torngas 是基于[Tornado](https://github.com/tornadoweb/tornado)的web mvc框�
 
 	>当你使用 `load_all` 来载入 `application` 和  `httpserver` 时，使用 `start` 是更好的选择 。
 		
-* ####app:
+* #### app:
 	
 	如顶述目录结构，您可以在应用根目录下创建多个app模块，假如你建立了应用myapp1，应用目录中**必须**包含 `urls.py`。
 	同时，要加载你的应用，你需要在配置文件中 `INSTALLED_APPS` 元组中增加你的app配置，如你的应用根目录app下存在myapp1，myapp2，则需：
@@ -170,7 +170,7 @@ Torngas 是基于[Tornado](https://github.com/tornadoweb/tornado)的web mvc框�
 
 	系统启动后，将自动加载myapp1,myapp2中的urls.py下的路由配置。
 
-* ####urls:
+* #### urls:
 
 	每一个app都必须包含一个urls.py的路由表文件。你可以像这样配置路由：
 
@@ -237,7 +237,7 @@ Torngas 是基于[Tornado](https://github.com/tornadoweb/tornado)的web mvc框�
 			url(r'/user/me/?','user.MeHandler'),
 		)
 	
-* ####log：
+* #### log：
     ###### version add:1.8.0  
 	torngas支持使用原生tornado日志模块，或torngas基于logging扩展日志，torngas默认启用扩展日志代替tornado默认的log，除非`--disable_log＝False` ,则启用tornado.log模块 。
 
@@ -262,7 +262,7 @@ Torngas 是基于[Tornado](https://github.com/tornadoweb/tornado)的web mvc框�
 
 	
 
-* ####模板引擎：
+* #### 模板引擎：
 
 	在配置文件 `TEMPLATE_CONFIG` 中配置模板。 其中，`template_engine` 决定使用什么模板加载器(Loader) ,默认为 None，使用自带的模板引擎。 可选择使用 mako 或 jinja2 ，*需要安装依赖库 mako或jinja2* 。
 
@@ -278,7 +278,7 @@ Torngas 是基于[Tornado](https://github.com/tornadoweb/tornado)的web mvc框�
 		
 		}
 
-* ####handler：
+* #### handler：
 	
 	如果需要使用torngas提供的功能，业务handler需要继承自 `torngas.handler.WebHandler`或 `torngas.handler.ApiHandler` .
 	
@@ -305,7 +305,7 @@ Torngas 是基于[Tornado](https://github.com/tornadoweb/tornado)的web mvc框�
 		{% end %}
 	
 
-* ####中间件：
+* #### 中间件：
 
 	torngas实现了简单的中间件功能，其行为和功能类似于 Django 的中间件。在这里引用一张Django中间件的流程图：
 
@@ -404,7 +404,7 @@ Torngas 是基于[Tornado](https://github.com/tornadoweb/tornado)的web mvc框�
 	
 
 
-* ####HTTP处理器：
+* #### HTTP处理器：
 
 	中间件提供了对请求处理流程的干预能力，使得我们可以控制请求过程中的各个方面。但是我们无法从容的对特定请求的特定过程进行干预。HTTP处理器提供了路由级别的请求处理能力。HTTP处理器分为两种： `全局处理器` 和 `路由处理器` 。
 	
@@ -448,7 +448,7 @@ Torngas 是基于[Tornado](https://github.com/tornadoweb/tornado)的web mvc框�
 		如上实例中，请求名为Index 的路由将不执行 `COMMON_MODULES` 中配置的 `httpmodule.auth.AuthModule` 模块，请求满足 `^/user/.*$` 正则的路由不执行 `httpmodule.ipauth.ipblack` 模块。
 
 
-* ####缓存：
+* #### 缓存：
 
 	torngas支持使用memcache，redis，file，localcache作为缓存。缓存模块主要抽取自django.cache，相关配置可参考 Django文档，redis是新增支持。
 
@@ -474,7 +474,7 @@ Torngas 是基于[Tornado](https://github.com/tornadoweb/tornado)的web mvc框�
 
 		`RedisClient`提供一个原生的client属性，提供基础的，原生的redis-py功能,而`RedisCache` 继承自 `RedisClient` 是提供高层缓存使用，其实现了和 `torngas.cache.backends.memcached.MemcachedCache`相同的接口，且行为和功能一致。如果你需要一些高级的redis方法，请使用RedisClient，如果仅仅需要基础的缓存功能，使用RedisCache即可。RedisCache同样提供client属性。
 
-* ####DB&ORM：
+* #### DB&ORM：
 
 	torngas提供了对SqlAlchemy ORM的支持，模块`torngas.db.dbalchemy`对sqlalchemy进行了基本的封装使其更加易用。同时，torngas提供了一个简单轻量级的db模块basedb，此模块来自与web.py框架的db模块，基本的使用方式可以参考[web.py cookbook](http://webpy.org/cookbook/index.zh-cn),下面主要介绍dbalchemy模块。
 
@@ -564,7 +564,7 @@ Torngas 是基于[Tornado](https://github.com/tornadoweb/tornado)的web mvc框�
 	>使用Sqlalchemy必须在配置中间件中加入：**torngas.middleware.dbalchemy.DBAlchemyMiddleware**
 		
 
-* ####异步线程池
+* #### 异步线程池
 
 	tornado本身是异步单线程单进程框架，这样当遇到使用mysql的慢查询时，就会阻塞进程。torngas提供一个简单的方式来用线程池包装同步方法。通过配置文件设定
 	`THREADS_NUM` 数量来决定线程池的最大线程数，默认为cpu_count。
@@ -589,7 +589,7 @@ Torngas 是基于[Tornado](https://github.com/tornadoweb/tornado)的web mvc框�
 			        return result
 
 
-* ####session：
+* #### session：
 
 	torngas提供一个简单的session功能，session可以使用torngas.cache下的缓存模块或实现了 `torngas.cache.backends.base.BaseCache` 的模块类作为session_store,比如你可以使用memcache、redis或LocalCache缓存来作为session的存储。
 	
@@ -626,7 +626,7 @@ Torngas 是基于[Tornado](https://github.com/tornadoweb/tornado)的web mvc框�
 				def get(self,uid):
 					del self.session['userid']
 
-* ####signal:
+* #### signal:
 
 	信号组件提供信号的注册与通知处理能力，我们可以在任何地方注册事件，也可以在你希望的任何时候触发事件。在信号触发时，将调用接收信号的callback，进行相关业务逻辑处理。
 	
